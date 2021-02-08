@@ -56,7 +56,14 @@ public class Job {
     }
 
     public String getName() {
-        return name;
+        //Added validation to handle empty strings passed into constructor
+        String noDataMsg = "Data not available";
+
+        if ((name == "") || (name == " ") || (name == null)) {
+            return noDataMsg;
+        } else {
+            return name;
+        }
     }
 
     public void setName(String name) {
@@ -94,4 +101,17 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    @Override
+    public String toString() {
+        return "\nID: " + id +
+                "\nName: " + getName() +
+                "\nEmployer: " + employer.getValue() +
+                "\nLocation: " + location.getValue() +
+                "\nPosition Type: " + positionType.getValue() +
+                "\nCore Competency: " + coreCompetency.getValue() +
+                "\n";
+    }
+
 }
+
