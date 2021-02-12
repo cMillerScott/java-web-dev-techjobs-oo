@@ -24,7 +24,14 @@ public class Job {
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
-        this.name = name;
+
+        //Added validation to handle empty strings passed into name value
+        if ((name == "") || (name == " ") || (name == null)) {
+            this.name = "Data not available";
+        } else {
+            this.name = name;
+        }
+
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
@@ -56,14 +63,7 @@ public class Job {
     }
 
     public String getName() {
-        //Added validation to handle empty strings passed into constructor
-        String noDataMsg = "Data not available";
-
-        if ((name == "") || (name == " ") || (name == null)) {
-            return noDataMsg;
-        } else {
-            return name;
-        }
+        return name;
     }
 
     public void setName(String name) {
@@ -104,12 +104,15 @@ public class Job {
 
     @Override
     public String toString() {
+        if ((name == null) && (employer == null) && (location == null) && (positionType == null) && (coreCompetency == null)) {
+            return "\nOOPS! This job does not seem to exist.\n";
+        }
         return "\nID: " + id +
-                "\nName: " + getName() +
-                "\nEmployer: " + employer.getValue() +
-                "\nLocation: " + location.getValue() +
-                "\nPosition Type: " + positionType.getValue() +
-                "\nCore Competency: " + coreCompetency.getValue() +
+                "\nName: " + name +
+                "\nEmployer: " + employer +
+                "\nLocation: " + location +
+                "\nPosition Type: " + positionType +
+                "\nCore Competency: " + coreCompetency +
                 "\n";
     }
 

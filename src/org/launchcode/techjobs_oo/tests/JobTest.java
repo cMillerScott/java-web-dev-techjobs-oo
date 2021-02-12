@@ -68,4 +68,8 @@ public class JobTest {
                 "\n", test_job5.toString());
     }
 
+    @Test
+    public void testEmptyConstructorReturnsErrorMessage() {
+        assertTrue(test_job1.toString() == "\nOOPS! This job does not seem to exist.\n");
+    }
 }

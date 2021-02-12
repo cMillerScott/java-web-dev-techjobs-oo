@@ -14,7 +14,12 @@ public abstract class JobField {
 
     public JobField(String value) {
         this();
-        this.value = value;
+        //Added validation to handle empty strings passed into constructor
+        if (value.equals(" ") || value.equals("")) {
+            this.value = "Data not available";
+        } else {
+            this.value = value;
+        }
     }
 
     // Custom toString, equals, and hashCode methods:
@@ -46,14 +51,7 @@ public abstract class JobField {
     }
 
     public String getValue() {
-        //Added validation to handle empty strings passed into constructor
-        String noDataMsg = "Data not available";
-
-        if (value.equals(" ") || value.equals("") || value.equals(null)) {
-            return noDataMsg;
-        } else {
-            return value;
-        }
+        return value;
     }
 
     public void setValue(String value) {
