@@ -44,6 +44,12 @@ public class JobTest {
     }
 
     @Test
+    public void testCustomToStringStartsAndEndsWithBlankLine() {
+        assertTrue(test_job3.toString().startsWith("\n"));
+        assertTrue(test_job3.toString().endsWith("\n"));
+    }
+
+    @Test
     public void testCustomToStringFormat() {
         assertEquals("\nID: " + test_job3.getId() +
                 "\nName: " + test_job3.getName() +
